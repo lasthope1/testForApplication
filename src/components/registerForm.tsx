@@ -1,15 +1,61 @@
-import {useRef, useState, useEffect} from 'react'
+import {useRef, useState, useEffect, SyntheticEvent} from 'react'
+
+interface IUSER {
+    fname: string
+    lname: string
+    gender: string
+    email: string
+    address: string
+    post_code: string
+    tel_num: string
+    is_accept: boolean
+}
 
 function RegisterForm() {
 
+    const [gender, setGender] = useState<string>('');
+    const [fname, setFname] = useState<string>('');
+    const [lname, setLname] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [address, setAddress] = useState<string>('');
     const [telNum, setTelNum] = useState<string>('');
     const [postCode, setPostCode] = useState<string>('');
-    const [gender, setGender] = useState<string>('');
     const [accept, setAccept] = useState<boolean>(false);
+
+    const [userInfo, setUserInfo] = useState<IUSER>(
+        {
+            fname: '',
+            lname: '',
+            gender: '',
+            email: '',
+            address: '',
+            post_code: '',
+            tel_num: '',
+            is_accept: false
+        }
+    )
+
+    const onSubmit = (event: SyntheticEvent) => {
+        event.preventDefault()
+        setUserInfo({
+            fname: fname,
+            lname: lname,
+            gender: gender,
+            email: email,
+            address: address,
+            post_code: postCode,
+            tel_num: telNum,
+            is_accept: accept
+        })
+    }
+
+    useEffect(() => {
+        console.log(userInfo)
+    }, [userInfo])
 
   return (
         <div className="w-full mt-8 bg-white px-5 py-10 rounded-3xl border-2 border-gray-100 shadow-lg">
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className='w-full flex'>
                 <div className='lg:w-1/2 px-5'>
                     <h3 className='text-base font-semibold text-sky-500'>General Information</h3>
@@ -23,6 +69,7 @@ function RegisterForm() {
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 type="text"
                                 placeholder='John'
+                                onChange={e => {setFname(e.target.value)}}
                                 required
                             />
                         </div>
@@ -37,6 +84,7 @@ function RegisterForm() {
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 type="text"
                                 placeholder='Smith'
+                                onChange={e => {setLname(e.target.value)}}
                                 required
                             />
                         </div>
@@ -51,8 +99,8 @@ function RegisterForm() {
                                 onChange={e => {setGender(e.target.value)}}
                                 required
                             >
-                                <option value='mail'>Mail</option>
-                                <option value='femail'>Femail</option>
+                                <option value='male'>Male</option>
+                                <option value='female'>Female</option>
                                 <option value='other'>Other</option>
                             </select>
                         </div>
@@ -70,6 +118,7 @@ function RegisterForm() {
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 type="email"
                                 placeholder='example@test.com'
+                                onChange={e => setEmail(e.target.value)}
                                 required
                             />
                         </div>
@@ -83,6 +132,7 @@ function RegisterForm() {
                                 className="w-full mt-2 p-2 border-2 border-gray-300 rounded-md shadow-sm bg-transparent
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 placeholder='123/999 Suthep Road, Chiang Mai, Thailand'
+                                onChange={e => setAddress(e.target.value)}
                                 required
                             />
                         </div>
