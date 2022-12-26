@@ -60,7 +60,7 @@ function LoginForm() {
                 <div className='mt-8 flex flex-col'>
                     <button 
                         className='active:scale-[.98] active:duration hover:scale-[1.01] ease-in-out translate-all py-3 rounded-xl 
-                        bg-gradient-to-tr from-sky-600 to-green-400 text-white text-lg font-bold' 
+                        bg-gradient-to-tr from-sky-600 to-green-400 text-white text-lg font-bold shadow-lg shadow-blue-500/50' 
                     >
                         SIGN IN
                     </button>

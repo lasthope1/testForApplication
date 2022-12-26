@@ -6002,6 +6002,11 @@ levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+libphonenumber-js@^1.9.50:
+  version "1.10.15"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.15.tgz#cad454adb5bf271bc820bbf7dd66776afcda7be6"
+  integrity sha512-sLeVLmWX17VCKKulc+aDIRHS95TxoTsKMRJi5s5gJdwlqNzMWcBCtSHHruVyXjqfi67daXM2SnLf2juSrdx5Sg==
+
 lilconfig@^2.0.3, lilconfig@^2.0.5, lilconfig@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.6.tgz#32a384558bd58af3d4c6e077dd1ad1d397bc69d4"
@@ -8673,6 +8678,13 @@ url-parse@^1.5.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+use-telephone@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/use-telephone/-/use-telephone-1.0.13.tgz#508fe55e25750b18e7d4f92e5f9a1c50ef974374"
+  integrity sha512-3rdAi/87vfjEU4D1CWUT3mdvRBYiSXUz1yNy2MflrP4cEJctqgRKaxwtuLYJavqvAsQQdp5jm0HUAPY34WiEBg==
+  dependencies:
+    libphonenumber-js "^1.9.50"
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
