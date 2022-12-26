@@ -51,6 +51,14 @@ function RegisterForm() {
 
     useEffect(() => {
         console.log(userInfo)
+        setGender('')
+        setFname('')
+        setLname('')
+        setEmail('')
+        setAddress('')
+        setPostCode('')
+        setTelNum('')
+        setAccept(false)
     }, [userInfo])
 
   return (
@@ -69,6 +77,7 @@ function RegisterForm() {
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 type="text"
                                 placeholder='John'
+                                value={fname}
                                 onChange={e => {setFname(e.target.value)}}
                                 required
                             />
@@ -84,6 +93,7 @@ function RegisterForm() {
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 type="text"
                                 placeholder='Smith'
+                                value={lname}
                                 onChange={e => {setLname(e.target.value)}}
                                 required
                             />
@@ -97,8 +107,10 @@ function RegisterForm() {
                             <select className='w-full mt-2 p-2 border-2 border-gray-300 rounded-md shadow-sm bg-transparent
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
                                 onChange={e => {setGender(e.target.value)}}
+                                value={gender}
                                 required
                             >
+                                <option value='' disabled>-- Please select your gender --</option>
                                 <option value='male'>Male</option>
                                 <option value='female'>Female</option>
                                 <option value='other'>Other</option>
@@ -118,6 +130,7 @@ function RegisterForm() {
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 type="email"
                                 placeholder='example@test.com'
+                                value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 required
                             />
@@ -132,6 +145,7 @@ function RegisterForm() {
                                 className="w-full mt-2 p-2 border-2 border-gray-300 rounded-md shadow-sm bg-transparent
                                 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 placeholder='123/999 Suthep Road, Chiang Mai, Thailand'
+                                value={address}
                                 onChange={e => setAddress(e.target.value)}
                                 required
                             />
@@ -177,7 +191,7 @@ function RegisterForm() {
                         <input name="accept_cond" 
                             className='lg:w-5 lg:h-5 hover:cursor-pointer'
                             type="checkbox"
-                            defaultChecked={accept}
+                            checked={accept}
                             onChange={() => setAccept(!accept)}
                             required
                         />
