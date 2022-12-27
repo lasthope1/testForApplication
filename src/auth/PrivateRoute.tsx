@@ -5,7 +5,7 @@ function PrivateRoute(props: any) {
     const token = localStorage.getItem('auth');
   return (
     <>
-        {token ? <Route {...props} /> : redirect ('/')}
+        {token ? <Route {...props} /> : redirect('/')}
     </>
   );
 }
