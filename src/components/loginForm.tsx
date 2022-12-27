@@ -1,9 +1,12 @@
-import { SyntheticEvent ,useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { SyntheticEvent ,useState, useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import {FaEye, FaEyeSlash} from 'react-icons/fa'
+import AuthContext from '../context/AuthContext'
+import {IAuthContext} from '../interface/Interfaces'
 
 
 function LoginForm() {
+    const {setUser} = useContext<IAuthContext>(AuthContext)
     const navigate = useNavigate();
     const [toggle, setToggle] = useState<boolean>(false);
     
@@ -13,6 +16,11 @@ function LoginForm() {
     function submitHandler(event: SyntheticEvent){
         event.preventDefault()
         navigate('/Home')
+        setUser({
+            id: '',
+            email: email,
+            password: password
+        })
     }
   return (
     <div className="mt-8 bg-white px-10 py-10 rounded-3xl border-2 border-gray-100 shadow-md">

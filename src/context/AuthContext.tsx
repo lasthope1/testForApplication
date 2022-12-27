@@ -1,15 +1,9 @@
 import { createContext } from 'react';
-import { IUser } from '../hook/useUser';
-
-
-export interface IAuthContext {
-    user: IUser | null;
-    setUser: (user: IUser | null) => void;
-}
+import { IAuthContext, IUser } from '../interface/Interfaces';
 
 const AuthContext = createContext<IAuthContext>({
     user: null,
     setUser: () => {},
-  });
+});
 
 export default AuthContext

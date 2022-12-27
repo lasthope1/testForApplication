@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
-import useUser, { IUser } from './useUser';
+import useUser from './useUser';
 import useLocalStorage from './useLocalStorage';
+import {IUser} from '../interface/Interfaces';
 
 function useAuth() {
     const { user, addUser, removeUser } = useUser();
     const { getItem } = useLocalStorage();
   
     useEffect(() => {
-      const user = getItem('user');
-      if(user) {
-        addUser(JSON.parse(user));
-      }
+      const user: IUser = getItem('user');
+      addUser(user)
     }, []);
   
-    const login = (user: IUser) => {
+    const setUser = (user: IUser) => {
       addUser(user);
     };
   
@@ -21,7 +20,7 @@ function useAuth() {
       removeUser();
     };
   
-    return { user, login, logout };
+    return { user, setUser, logout };
 }
 
 export default useAuth
